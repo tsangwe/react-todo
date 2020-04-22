@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.MuiAppBar-root {
+  margin-bottom: 20px !important;
+}
+
+.MuiPaper-root {
+  min-width: 70%;
+  padding: 10px;
+  margin-bottom: 90px;
+}
+
+.MuiCard-root {
+  margin: 10px;
+}
+
+.MuiSvgIcon-root {
+  float: right;
+  position: relative;
+  top: 6px
+}
+
+.MuiCardContent-root:last-child {
+  padding: 0px !important;
+}
+
+#addIcon {
+  float: none;
 }
