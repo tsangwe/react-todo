@@ -16,11 +16,12 @@ class TodoForm extends Component {
 
     handleFormChange(event) {
         this.setState({
-            newTodoContent: event.target.value
+            value: event.target.value
         });
     }
 
     addTodo() {
+        console.log(this.state.value);
         this.props.addTodo(this.state.value);
     }
 
@@ -36,3 +37,5 @@ class TodoForm extends Component {
         )
     }
 }
+
+export default TodoForm;
