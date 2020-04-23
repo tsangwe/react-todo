@@ -22,7 +22,6 @@ class TodoList extends Component {
         TodosApi.getAllTodos().then((response) => {
             const recievedTodos = response.data;
             this.setState({ todos: recievedTodos });
-            console.log(this.state.todos);
         });
     }
 
@@ -93,7 +92,7 @@ class TodoList extends Component {
                             variant="outlined"
                             value={ this.state.newTodoContent } 
                             onChange={ this.handleFormChange } />
-                    <IconButton></IconButton><PostAddOutlinedIcon id="addIcon" onClick={ this.addTodo } /></IconButton>
+                    <IconButton  onClick={ this.addTodo }><PostAddOutlinedIcon /></IconButton>
                 </form>
             </Paper>
         );

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Card, CardContent } from '@material-ui/core';
-import { ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@material-ui/core';
-import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+import { ListItem, ListItemText, ListItemSecondaryAction, IconButton, Divider, List, ListItemAvatar, Avatar } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 
 class TodoElement extends Component {
+
     constructor(props) {
         super(props);
 
@@ -27,30 +28,44 @@ class TodoElement extends Component {
 
     render() {
         return (
-            // <Card>
-            //     { 
-            //         this.state.status ? 
-            //         <CardContent>
-            //             <span onClick={ this.updateStatus }>{ this.state.content }</span>
-            //             <CancelOutlinedIcon onClick={ this.removeTodo } />
-            //         </CardContent> 
-            //         : <CardContent><strike>
-            //             <span onClick={ this.updateStatus }>{ this.state.content }</span>
-            //             <CancelOutlinedIcon onClick={ this.removeTodo } />
-            //         </strike></CardContent>
-            //     }
-            // </Card>
-            <ListItem>
-                <ListItemText
-                primary="Single-line item"
-                secondary={secondary ? 'Secondary text' : null}
-                />
-                <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
-                </IconButton>
-                </ListItemSecondaryAction>
-            </ListItem>
+            <List dense={true}> 
+                {this.state.status ?
+                <ListItem onClick={ this.updateStatus }>
+                    <ListItemAvatar>
+                        <Avatar>
+                        <AssignmentOutlinedIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText
+                    primary={ this.state.content }
+                    />
+                    <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete" onClick={ this.removeTodo }>
+                        <DeleteIcon />
+                    </IconButton>
+                    </ListItemSecondaryAction>
+                </ListItem>
+                :
+                <ListItem onClick={ this.updateStatus }>
+                    <ListItemAvatar>
+                        <Avatar>
+                        <AssignmentOutlinedIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <strike>
+                    <ListItemText
+                    primary={ this.state.content }
+                    />
+                    </strike>
+                    <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete" onClick={ this.removeTodo }>
+                        <DeleteIcon />
+                    </IconButton>
+                    </ListItemSecondaryAction>
+                </ListItem>
+                }
+                <Divider />
+            </List>
         );
     }
 }
