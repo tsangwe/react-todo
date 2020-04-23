@@ -69,3 +69,7 @@
 .MuiPaper-elevation3 {
   margin-top: 150px;
 }
+
+.done {
+  text-decoration: line-through;
+}

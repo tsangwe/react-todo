@@ -10,6 +10,7 @@ class TodoElement extends Component {
 
         this.updateStatus = this.updateStatus.bind(this);
         this.removeTodo = this.removeTodo.bind(this);
+        this.generateHTML = this.generateHTML.bind(this);
 
         this.state = {
             id: this.props.id,
@@ -26,47 +27,32 @@ class TodoElement extends Component {
         this.props.removeTodo(this.state.id);
     }
 
-    render() {
-        return (
-            <List dense={true}> 
-                {this.state.status ?
-                <ListItem onClick={ this.updateStatus }>
-                    <ListItemAvatar>
-                        <Avatar>
-                        <AssignmentOutlinedIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                    primary={ this.state.content }
-                    />
-                    <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete" onClick={ this.removeTodo }>
-                        <DeleteIcon />
-                    </IconButton>
-                    </ListItemSecondaryAction>
-                </ListItem>
-                :
-                <ListItem onClick={ this.updateStatus }>
-                    <ListItemAvatar>
-                        <Avatar>
-                        <AssignmentOutlinedIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <strike>
-                    <ListItemText
-                    primary={ this.state.content }
-                    />
-                    </strike>
-                    <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete" onClick={ this.removeTodo }>
-                        <DeleteIcon />
-                    </IconButton>
-                    </ListItemSecondaryAction>
-                </ListItem>
-                }
-                <Divider />
-            </List>
+    generateHTML() {
+        let todoClass = this.state.status ? "" : "done";
+
+        return (<List dense={true}> 
+                    <ListItem onClick={ this.updateStatus }>
+                        <ListItemAvatar>
+                            <Avatar>
+                            <AssignmentOutlinedIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText class={todoClass}
+                        primary={ this.state.content }
+                        />
+                        <ListItemSecondaryAction>
+                        <IconButton edge="end" aria-label="delete" onClick={ this.removeTodo }>
+                            <DeleteIcon />
+                        </IconButton>
+                        </ListItemSecondaryAction>
+                    </ListItem>
+                    <Divider />
+                </List>
         );
+    }
+
+    render() {
+        return this.generateHTML();
     }
 }
 
